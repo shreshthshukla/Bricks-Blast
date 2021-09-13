@@ -58,7 +58,7 @@ function preload(){
 
 function setup() {
 createCanvas(1520,windowHeight);
-
+frameRate = 20;
 // creating the start button
 start = createSprite(750,600);
 start.addImage(startI)
@@ -118,11 +118,12 @@ lock2.addImage(lockI);
 lock2.scale = 0.1
 lock2.visible = false;
 
+score = 0;
+
 }
 
 function draw() {
   background("lightblue");  
-  drawSprites();
 
 
   // Making the ball bounce off the edges and paddle
@@ -186,7 +187,7 @@ function draw() {
    }
   }
 // gameState serve
-  if(gameState==0){
+  if(gameState===0){
     level1.visible=false;
     level2.visible=false;
     level3.visible=false;
@@ -197,16 +198,16 @@ function draw() {
 
     paddle.visible = true;
     ball.visible = true;
-
-    if(keyDown("space")&&gameState==0){
-      gameState = 1;
-      ballServe();
-    }
+    gameState = 1
 
   }
 
   // gameState play
-  if(gameState==1){
+  if(gameState===1){
+    
+    if(keyDown("space")){
+      ballServe();
+    }
   // Making the paddle move with keys.
   if(keyDown("right")){
   paddle.x+=13
@@ -214,8 +215,11 @@ function draw() {
   if(keyDown("left")){
   paddle.x-=13
   }
-
+  fill("Black")
+  textSize(40);
+  text("𓊈𒆜🆂🅲🅾🆁🅴𒆜𓊉  "+score,50,700)
   moveBricks();
+
 
   }
 
@@ -223,16 +227,17 @@ function draw() {
 
 
 
-
+  drawSprites();
 
     
   
 
-  // if(keyDown("r")){
-  //   resetAll();
-  // }
+  if(keyDown("r")){
+    resetAll();
+  }
  
-  text(mouseX+","+mouseY,100,height/1.5)
+  // text(mouseX+","+mouseY,100,height/1.5)
+  
 }
 
 function ballServe(){
@@ -284,6 +289,11 @@ block49.x=1280;
 block50.x=1440;
 
 paddle.x = 750
+
+ball.x = 750
+ball.y = paddle.y-40
+ball.setVelocity(0,0);
+
 }
 
 function bricks(){
@@ -384,8 +394,16 @@ function moveBricks(){
 
     ball.bounceOff(block1); 
 
-    block1.x = 2000; 
+    block1.x = 2000;  
+    console.log("touched")
 
+    var rand = Math.round(random(1,2));
+
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block2)){ 
@@ -393,7 +411,14 @@ function moveBricks(){
     ball.bounceOff(block2); 
 
     block2.x = 2000; 
+    console.log("touched")
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block3)){ 
@@ -401,7 +426,14 @@ function moveBricks(){
     ball.bounceOff(block3); 
 
     block3.x = 2000; 
+    console.log("touched")
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block4)){ 
@@ -409,7 +441,14 @@ function moveBricks(){
     ball.bounceOff(block4); 
 
     block4.x = 2000; 
+    console.log("touched")
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block5)){ 
@@ -417,7 +456,14 @@ function moveBricks(){
     ball.bounceOff(block5); 
 
     block5.x = 2000; 
+    console.log("touched")
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block6)){ 
@@ -425,13 +471,27 @@ function moveBricks(){
     ball.bounceOff(block6); 
 
     block6.x = 2000; 
+    var rand = Math.round(random(1,2));
 
-  }if(ball.isTouching(block7)){ 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
+  }
+
+  if(ball.isTouching(block7)){ 
 
     ball.bounceOff(block7); 
 
     block7.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block8)){ 
@@ -439,7 +499,13 @@ function moveBricks(){
     ball.bounceOff(block8); 
 
     block8.x = 2000; 
+var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block9)){ 
@@ -447,7 +513,13 @@ function moveBricks(){
     ball.bounceOff(block9); 
 
     block9.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block10)){ 
@@ -455,7 +527,13 @@ function moveBricks(){
     ball.bounceOff(block10); 
 
     block10.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block11)){ 
@@ -463,7 +541,13 @@ function moveBricks(){
     ball.bounceOff(block11); 
 
     block11.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block12)){ 
@@ -471,7 +555,13 @@ function moveBricks(){
     ball.bounceOff(block12); 
 
     block12.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block13)){ 
@@ -479,7 +569,13 @@ function moveBricks(){
     ball.bounceOff(block13); 
 
     block13.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block14)){ 
@@ -487,7 +583,13 @@ function moveBricks(){
     ball.bounceOff(block14); 
 
     block14.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block15)){ 
@@ -495,7 +597,13 @@ function moveBricks(){
     ball.bounceOff(block15); 
 
     block15.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block16)){ 
@@ -503,7 +611,13 @@ function moveBricks(){
     ball.bounceOff(block16); 
 
     block16.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block17)){ 
@@ -511,7 +625,13 @@ function moveBricks(){
     ball.bounceOff(block17); 
 
     block17.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block18)){ 
@@ -519,7 +639,13 @@ function moveBricks(){
     ball.bounceOff(block18); 
 
     block18.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block19)){ 
@@ -527,7 +653,13 @@ function moveBricks(){
     ball.bounceOff(block19); 
 
     block19.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block20)){ 
@@ -535,7 +667,13 @@ function moveBricks(){
     ball.bounceOff(block20); 
 
     block20.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block21)){ 
@@ -543,7 +681,13 @@ function moveBricks(){
     ball.bounceOff(block21); 
 
     block21.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block22)){ 
@@ -551,7 +695,13 @@ function moveBricks(){
     ball.bounceOff(block22); 
 
     block22.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block23)){ 
@@ -559,7 +709,13 @@ function moveBricks(){
     ball.bounceOff(block23); 
 
     block23.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block24)){ 
@@ -567,7 +723,13 @@ function moveBricks(){
     ball.bounceOff(block24); 
 
     block24.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block34)){ 
@@ -575,7 +737,13 @@ function moveBricks(){
     ball.bounceOff(block34); 
 
     block34.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block35)){ 
@@ -583,7 +751,13 @@ function moveBricks(){
     ball.bounceOff(block35); 
 
     block35.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block36)){ 
@@ -591,7 +765,13 @@ function moveBricks(){
     ball.bounceOff(block36); 
 
     block36.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block37)){ 
@@ -599,7 +779,13 @@ function moveBricks(){
     ball.bounceOff(block37); 
 
     block37.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block38)){ 
@@ -607,7 +793,13 @@ function moveBricks(){
     ball.bounceOff(block38); 
 
     block38.x = 2000; 
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block39)){ 
@@ -615,94 +807,197 @@ function moveBricks(){
     ball.bounceOff(block39); 
 
     block39.x = 2000; 
+    console.log("touched")
+    var rand = Math.round(random(1,2));
 
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block40)){ 
 
     ball.bounceOff(block40); 
-
     block40.x = 2000; 
 
+
+    console.log("touched")
+    var rand = Math.round(random(1,2));
+
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block41)){ 
 
     ball.bounceOff(block41); 
-
     block41.x = 2000; 
 
+    console.log(block41.x);
+
+    console.log("touched")
+    var rand = Math.round(random(1,2));
+
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block42)){ 
 
     ball.bounceOff(block42); 
-
     block42.x = 2000; 
 
+    console.log(block42.x);
+
+    console.log("touched")
+    var rand = Math.round(random(1,2));
+
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block43)){ 
 
     ball.bounceOff(block43); 
-
     block43.x = 2000; 
 
+    console.log(block43.x);
+
+    console.log("touched")
+    var rand = Math.round(random(1,2));
+
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block44)){ 
 
     ball.bounceOff(block44); 
-
     block44.x = 2000; 
 
+    console.log(block44.x);
+
+    console.log("touched")
+    var rand = Math.round(random(1,2));
+
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block45)){ 
 
     ball.bounceOff(block45); 
-
     block45.x = 2000; 
 
+    console.log(block45.x);
+
+    console.log("touched")
+    var rand = Math.round(random(1,2));
+
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block46)){ 
 
     ball.bounceOff(block46); 
-
     block46.x = 2000; 
 
+    console.log(block46.x);
+
+    console.log("touched")
+    var rand = Math.round(random(1,2));
+
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block47)){ 
 
     ball.bounceOff(block47); 
-
     block47.x = 2000; 
 
+    console.log(block47.x);
+
+    console.log("touched")
+    var rand = Math.round(random(1,2));
+
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block48)){ 
 
     ball.bounceOff(block48); 
-
     block48.x = 2000; 
 
+    console.log(block48.x);
+
+    console.log("touched")
+    var rand = Math.round(random(1,2));
+
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block49)){ 
 
     ball.bounceOff(block49); 
-
     block49.x = 2000; 
 
+    console.log(block49.x);
+
+    console.log("touched")
+    var rand = Math.round(random(1,2));
+
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 
   if(ball.isTouching(block50)){ 
-
     ball.bounceOff(block50); 
-
     block50.x = 2000; 
 
+   console.log(block50.x);
+    console.log("touched")
+    var rand = Math.round(random(1,2));
+
+    if(rand==1){
+      score = score+50;
+    }
+    else{    score = score+60
+    }
   } 
 }
