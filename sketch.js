@@ -59,11 +59,13 @@ function preload(){
 function setup() {
 createCanvas(1520,windowHeight);
 
+// creating the start button
 start = createSprite(750,600);
 start.addImage(startI)
 start.scale = 0.2
 start.setCollider("circle",0,0,300)
 
+// loading the starting animation
 load = createSprite(750,320);
 load.addAnimation("changing",loadI);
 
@@ -90,6 +92,7 @@ ball.scale=0.12
 ball.setCollider("circle",0,0,190);
 ball.visible = false;
 
+// creating levels
 level1 = createSprite(200,315)
 level1.addImage(level1I);
 level1.scale = 0.5
@@ -127,7 +130,12 @@ function draw() {
    ball.bounceOff(edges[0]);
    ball.bounceOff(edges[1]);
    ball.bounceOff(edges[2]);
+   
+  // bounce the paddle with the edges
+  paddle.bounceOff(edges[0])
+  paddle.bounceOff(edges[1])
 
+  //  GameState loading
   if(gameState==-3){
     textFont("Algerian")
     strokeWeight(20);
@@ -141,6 +149,7 @@ function draw() {
     gameState = -2
   }
 
+  // gameState home
   if(gameState==-2){
 
     start.visible = true;
@@ -157,6 +166,7 @@ function draw() {
       gameState = -1
     }
   }
+  // gameState levels
   if(gameState==-1){
 
     start.visible = false;
@@ -167,19 +177,21 @@ function draw() {
     level2.visible=true;
     level3.visible=true;
     lock1.visible=true;
-    lock2=visible=true;
+    lock2.visible=true;
+
+    image(levelsI,500,70,500,100);
 
    if(gameState==-1&&mousePressedOver(level1)){
     gameState = 0
    }
   }
-
+// gameState serve
   if(gameState==0){
     level1.visible=false;
     level2.visible=false;
     level3.visible=false;
     lock1.visible=false;
-    lock2=visible=false;
+    lock2.visible=false;
 
     bricks();
 
@@ -193,11 +205,8 @@ function draw() {
 
   }
 
+  // gameState play
   if(gameState==1){
-  // bounce the paddle with the edges
-  paddle.bounceOff(edges[0])
-  paddle.bounceOff(edges[1])
-
   // Making the paddle move with keys.
   if(keyDown("right")){
   paddle.x+=13
